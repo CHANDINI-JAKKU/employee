@@ -19,8 +19,15 @@ app.use("/emp-api", empRoute);
 //DB connection
 const connectDB = async () => {
   try {
-    await connect(process.env.DB_URL || "mongodb://localhost:27017/empdb");
-    console.log("DB connected");
+    const dbUrl = process.env.DB_URL;
+    if (!dbUrl) {
+      throw new Error("DB_URL is not defined in environment variables");
+    }
+    console.log("Connecting to DB...");
+    await connect(dbUrl, {
+      family: 4, // Force IPv4 to avoid some DNS issues
+    });
+    console.log("DB connected successfully");
     const port = process.env.PORT || 4000;
     app.listen(port, () => console.log(`server listening on port ${port}..`));
   } catch (err) {
