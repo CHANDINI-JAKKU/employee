@@ -1,0 +1,33 @@
+### CREATE EMPLOYEE
+POST http://localhost:4000/emp-api/employees
+Content-Type: application/json
+
+{
+  "name": "arjun",
+  "email": "arjun@gmail.com",
+  "mobile": "6455555590",
+  "designation": "aws developer",
+  "companyName": "TCS"
+}
+
+
+### READ ALL EMPLOYEES
+GET http://localhost:4000/emp-api/employees
+
+
+### UPDATE EMPLOYEE
+PUT http://localhost:4000/emp-api/employees/69ca2bc21bd496073cae913e
+Content-Type: application/json
+
+{
+  "name": "sara",
+  "email": "saraaaa@gmail.com",
+  "mobile": "1234567890",
+  "designation": "software engineer",
+  "companyName": "TCS"
+}
+
+
+### DELETE EMPLOYEE
+
+DELETE http://localhost:4000/emp-api/employees/69ca2bc21bd496073cae913e
