@@ -5,14 +5,16 @@ import cors from "cors";
 import "dotenv/config";
 import dns from "dns";
 
-// Force Google DNS for Atlas SRV records
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
+// Force Google DNS only if running locally and Atlas is failing
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL && !process.env.RENDER) {
+  dns.setServers(["8.8.8.8", "8.8.4.4"]);
+}
 
 const app = exp();
 //add cors middleware
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://employee-eosin-two.vercel.app"],
+    origin: "*", // Temporarily allow all for troubleshooting
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
