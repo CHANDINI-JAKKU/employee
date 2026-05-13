@@ -11,10 +11,15 @@ if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL && !process.env
 }
 
 const app = exp();
+// Request logger
+app.use((req, res, next) => {
+  console.log(`${req.method} request received at ${req.path}`);
+  next();
+});
 //add cors middleware
 app.use(
   cors({
-    origin: "https://employee-eosin-two.vercel.app",
+    origin: (origin, callback) => callback(null, true), // Allow all origins for troubleshooting
     methods: ["GET", "POST", "PUT", "DELETE"],
   }),
 );
