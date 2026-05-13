@@ -26,8 +26,7 @@ function EditEmployee() {
     //modify the form
     const saveModifiedEmp = async (modifiedEmp) => {
       //make http put req
-      const apiUrl = import.meta.env.VITE_API_URL || window.location.origin;
-      const res=await axios.put(`${apiUrl}/emp-api/employees/${state._id}`,modifiedEmp);
+      const res=await axios.put(`/emp-api/employees/${state._id}`,modifiedEmp);
       if(res.status===200){
         //navigate list of users
         navigate("/list");
