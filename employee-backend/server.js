@@ -8,7 +8,7 @@ const app = exp();
 //add cors middleware
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:5173", "https://employee-eosin-two.vercel.app"],
   }),
 );
 //body parser middleware
@@ -29,7 +29,10 @@ const connectDB = async () => {
     });
     console.log("DB connected successfully");
     const port = process.env.PORT || 4000;
-    app.listen(port, () => console.log(`server listening on port ${port}..`));
+    // Only listen if not running as a Vercel Serverless Function
+    if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+      app.listen(port, () => console.log(`server listening on port ${port}..`));
+    }
   } catch (err) {
     console.log("err in DB connection", err.message);
   }
@@ -46,3 +49,4 @@ app.use((err, req, res, next) => {
     reason: err.message,
   });
 });
+export default app;
