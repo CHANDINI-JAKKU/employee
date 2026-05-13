@@ -14,9 +14,8 @@ const app = exp();
 //add cors middleware
 app.use(
   cors({
-    origin: "*", // Temporarily allow all for troubleshooting
+    origin: "https://employee-eosin-two.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
   }),
 );
 //body parser middleware
