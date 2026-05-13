@@ -1,27 +1,13 @@
 {
   "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "employee-backend/server.js",
-      "use": "@vercel/node"
+      "source": "/emp-api/(.*)",
+      "destination": "/api/server.js"
     },
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/emp-api/(.*)",
-      "dest": "employee-backend/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "frontend/$1",
-      "check": true
+      "source": "/(.*)",
+      "destination": "/frontend/dist/$1"
     }
   ]
 }

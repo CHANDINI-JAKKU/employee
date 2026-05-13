@@ -2,6 +2,9 @@
   "name": "employee-monorepo",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build"
+  },
   "dependencies": {
     "express": "^5.2.1",
     "mongoose": "^9.3.3",
