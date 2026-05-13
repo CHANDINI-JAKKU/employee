@@ -3,6 +3,10 @@ import { connect } from "mongoose";
 import { empRoute } from "./API/empApp.js";
 import cors from "cors";
 import "dotenv/config";
+import dns from "dns";
+
+// Force Google DNS for Atlas SRV records
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 const app = exp();
 //add cors middleware
@@ -49,4 +53,5 @@ app.use((err, req, res, next) => {
     reason: err.message,
   });
 });
+
 export default app;
