@@ -13,6 +13,8 @@ const app = exp();
 app.use(
   cors({
     origin: ["http://localhost:5173", "https://employee-eosin-two.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   }),
 );
 //body parser middleware

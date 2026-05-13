@@ -26,7 +26,7 @@ function EditEmployee() {
     //modify the form
     const saveModifiedEmp = async (modifiedEmp) => {
       //make http put req
-      const res=await axios.put(`/emp-api/employees/${state._id}`,modifiedEmp);
+      const res=await axios.put(`https://employee-1-1y0v.onrender.com/emp-api/employees/${state._id}`,modifiedEmp);
       if(res.status===200){
         //navigate list of users
         navigate("/list");
