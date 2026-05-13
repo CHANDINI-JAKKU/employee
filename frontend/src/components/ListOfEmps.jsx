@@ -15,7 +15,7 @@ function ListOfEmps() {
   }
   //delete emp
   const deleteEmpById=async (id)=>{
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+    const apiUrl = import.meta.env.VITE_API_URL || window.location.origin;
     let res=await axios.delete(`${apiUrl}/emp-api/employees/${id}`)
     if(res.status===200){
       //get latest emps data
@@ -24,7 +24,7 @@ function ListOfEmps() {
   }
   //get all employees
   async function getEmps() {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+      const apiUrl = import.meta.env.VITE_API_URL || window.location.origin;
       let res = await axios.get(`${apiUrl}/emp-api/employees`);
       if (res.status === 200) {
         let resObj =  res.data;

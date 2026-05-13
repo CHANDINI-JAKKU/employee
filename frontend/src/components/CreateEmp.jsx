@@ -21,7 +21,7 @@ function CreateEmp() {
     try {
       setLoading(true);
       //make HTTP POST req
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+      const apiUrl = import.meta.env.VITE_API_URL || window.location.origin;
       let res = await fetch(`${apiUrl}/emp-api/employees`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
